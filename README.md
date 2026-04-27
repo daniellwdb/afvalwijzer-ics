@@ -17,7 +17,18 @@ At the moment, only 3 types of garbage are supported ("gft", "pmd", "restafval")
 
 A webserver runs which exposes 1 endpoint that accepts a postal code and house number in the following format: `http(s)://example.com/<postal code>/<house number>`. This endpoint serves an ics file which can be downloaded or you can set up a calendar client to subscribe to the endpoint.
 
-## Scripts
+There are multiple ways to use this project. The easiest way is to make use of my publicly hosted instance via `https://afvalwijzer.daniell.dev/<postal code>/<house number>`.
+
+**Run via Docker**
+
+```
+$ docker run -d \
+    --name afvalwijzer \
+    -p 8080:8080 \
+    -e SERVER_HOST=0.0.0.0 \
+    -e SERVER_PORT=8080 \
+    ghcr.io/daniellwdb/afvalwijzer-ics:main
+```
 
 **Run locally**
 
