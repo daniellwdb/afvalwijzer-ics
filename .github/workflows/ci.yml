@@ -8,15 +8,12 @@ on:
       - "v*"
   pull_request:
 
-permissions:
-  contents: read
-  packages: write
-
 jobs:
   build:
     uses: docker/github-builder/.github/workflows/build.yml@v1
     permissions:
       contents: read # to fetch the repository content
+      packages: write
       id-token: write # for signing attestation(s) with GitHub OIDC Token
     with:
       output: image
