@@ -23,7 +23,7 @@ There are multiple ways to use this project. The easiest way is to make use of m
 
 ```
 $ docker run -d \
-    --name afvalwijzer \
+    --name afvalwijzer-ics \
     -p 8080:8080 \
     -e SERVER_HOST=0.0.0.0 \
     -e SERVER_PORT=8080 \
