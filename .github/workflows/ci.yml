@@ -1,8 +1,5 @@
 name: ci
 
-env:
-  REGISTRY: ghcr.io
-
 on:
   push:
     branches:
@@ -24,13 +21,13 @@ jobs:
       output: image
       push: ${{ github.event_name != 'pull_request' }}
       platforms: linux/amd64,linux/arm64
-      meta-images: ${{ env.REGISTRY }}/${{ github.repository }}
+      meta-images: ${{ vars.REGISTRY }}/${{ github.repository }}
       meta-tags: |
         type=ref,event=branch
         type=ref,event=pr
         type=semver,pattern={{version}}
     secrets:
       registry-auths: |
-        - registry: ${{ env.REGISTRY }}
+        - registry: ${{ vars.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
