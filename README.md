@@ -33,6 +33,16 @@ Then run:
 $ node index.ts
 ```
 
+**Verify that the code is working**
+
+With the webserver running, run:
+
+```
+$ curl http://localhost:3000/<postal code>/<house number>
+```
+
+You should receive iCalendar output without errors.
+
 ## Acknowledgments
 
 `afvalwijzer-ics` was inspired by [mijnafvalwijzer-to-ical](https://github.com/vwout/mijnafvalwijzer-to-ical). I just wanted my own set of defaults and a webserver that I can link to from calendar clients.
