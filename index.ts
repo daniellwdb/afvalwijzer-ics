@@ -1,5 +1,5 @@
 import { JSDOM } from "jsdom";
-import { createEventsAsync, type EventAttributes } from "ics";
+import { createEventsAsync, type DateTime, type EventAttributes } from "ics";
 import http from "http";
 
 const SERVER_PORT = process.env.SERVER_PORT ? Number(process.env.SERVER_PORT) : 3000;
@@ -73,9 +73,11 @@ async function getIcsEvents(postcalCode: string, houseNumber: string) {
         return previousEvents;
       }
 
+      // Start the evening before collection day at 20:00
+      const eventStart: DateTime = [startYear, startMonth, startDay, 20, 0];
+
       const event: EventAttributes = {
-        // Start the evening before collection day at 20:00
-        start: [startYear, startMonth, startDay, 20, 0],
+        start: eventStart,
         // End at 20:00 on the collection day
         duration: { hours: 24 },
         title: wasteInfoDescription,
@@ -85,8 +87,7 @@ async function getIcsEvents(postcalCode: string, houseNumber: string) {
           {
             action: "display",
             description: `Zet uw ${wasteInfoDescription} bak bij de aanbiedplek.`,
-            // The night before collection day (20:00)
-            trigger: { hours: 0, minutes: 0, before: true },
+            trigger: eventStart,
           },
           {
             action: "display",
