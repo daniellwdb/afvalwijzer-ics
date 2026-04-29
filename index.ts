@@ -93,7 +93,7 @@ async function getIcsEvents(postcalCode: string, houseNumber: string) {
             action: "display",
             description: `Staat uw ${wasteInfoDescription} bak bij de aanbiedplek? Het kan nog tot 07.00 uur.`,
             // The morning of collection day (06:00)
-            trigger: { hours: 11, minutes: 0, before: false },
+            trigger: { hours: 10, minutes: 0, before: false },
           },
           // {
           //   action: "display",
