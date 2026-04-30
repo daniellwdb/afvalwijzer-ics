@@ -115,6 +115,10 @@ async function getIcsEvents(postcalCode: string, houseNumber: string) {
 const server = http.createServer();
 
 server.on("request", async (req, res) => {
+  if (req.url === "/health") {
+    return res.setHeader("Content-Type", "application/json").writeHead(200).end(`{"up": true}`);
+  }
+
   const [postalCode, houseNumber] = (req.url ?? "").split("/").filter(Boolean);
 
   if (!postalCode || !houseNumber) {
