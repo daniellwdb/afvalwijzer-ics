@@ -95,12 +95,12 @@ async function getIcsEvents(postcalCode: string, houseNumber: string) {
             // The morning of collection day (06:00)
             trigger: { hours: 10, minutes: 0, before: false },
           },
-          {
-            action: "display",
-            description: `Staat uw ${wasteInfoDescription} bak weer binnen? Het kan nog tot 20:00 uur.`,
-            // The evening of collection day (17:00)
-            trigger: { hours: 21, minutes: 0, before: false },
-          },
+          // {
+          //   action: "display",
+          //   description: `Staat uw ${wasteInfoDescription} bak weer binnen? Het kan nog tot 20:00 uur.`,
+          //   // The evening of collection day (17:00)
+          //   trigger: { hours: 19, minutes: 0, before: false },
+          // },
         ],
       };
 
