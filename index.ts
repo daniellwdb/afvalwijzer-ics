@@ -59,7 +59,10 @@ async function getIcsEvents(postcalCode: string, houseNumber: string) {
 
       // Night before (20:00)
       const startDate = new Date(collectionDate);
-      startDate.setHours(-4);
+
+      startDate.setDate(startDate.getDate() - 1);
+
+      startDate.setHours(20, 0, 0, 0);
 
       const startYear = startDate.getFullYear();
       const startMonth = startDate.getMonth() + 1;
